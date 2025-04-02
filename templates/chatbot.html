@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ChatBot</title>
+    <style>
+     
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #3b59bb
+
+;
+      }
+
+      header {
+        background-color: #24248b;
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo {
+        font-weight: bold;
+        font-size: 18px;
+
+      }
+      .imagem-redonda {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #000;
+        }
+
+      .chat-container {
+        width: 80%;
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      /* Área de mensagens */
+      .chat-messages {
+        height: 600px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        overflow-y: auto;
+        margin-bottom: 10px;
+      }
+
+      .mensagem {
+        margin: 5px 0;
+        padding: 8px 12px;
+        border-radius: 15px;
+        max-width: 70%;
+        clear: both;
+      }
+
+      .mensagem.usuario {
+        background-color: #d1e7dd;
+        float: right;
+        text-align: right;
+      }
+
+      .mensagem.bot {
+        background-color: #e2e3e5;
+        float: left;
+        text-align: left;
+      }
+
+      /* Área de input */
+      .chat-input {
+        display: flex;
+        gap: 10px;
+      }
+
+      .chat-input input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      .chat-input button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .chat-input button:hover {
+        background-color: #555;
+      }
+
+      /* Exemplo de um círculo à esquerda (avatar) */
+      .avatar {
+        width: 50px;
+        height: 50px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="image/PetMind.jpeg" class="imagem-redonda">
+    </header>
+
+    <div class="chat-container">
+      <!-- Exemplo de um avatar circular à esquerda -->
+    
+
+      <div class="chat-messages" id="chat-messages">
+        <!-- As mensagens aparecerão aqui -->
+      </div>
+
+      <div class="chat-input">
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Digite sua mensagem..."
+        />
+        <button onclick="enviarMensagem()">Enviar</button>
+      </div>
+    </div>
+
+    <script>
+      // Função para enviar a mensagem ao servidor
+      async function enviarMensagem() {
+        const input = document.getElementById("user-input");
+        const userText = input.value.trim();
+        if (!userText) return;
+
+        // Adiciona a mensagem do usuário no chat
+        adicionarMensagemNoChat(userText, "usuario");
+
+        // Limpa o campo de input
+        input.value = "";
+
+        try {
+          const response = await fetch("/enviar_mensagem", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ message: userText }),
+          });
+          const data = await response.json();
+
+          // Adiciona a resposta do "bot" no chat
+          adicionarMensagemNoChat(data.resposta, "bot");
+        } catch (error) {
+          console.error("Erro ao enviar mensagem:", error);
+        }
+      }
+
+      // Função para exibir mensagem no chat
+      function adicionarMensagemNoChat(texto, tipo) {
+        const chatMessages = document.getElementById("chat-messages");
+        const mensagem = document.createElement("div");
+        mensagem.classList.add("mensagem", tipo);
+        mensagem.textContent = texto;
+        chatMessages.appendChild(mensagem);
+
+        // Rola para a última mensagem
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+    </script>
+  </body>
+</html>
