@@ -1,0 +1,112 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #3b59bb
+
+;
+  }
+
+  header {
+    background-color: #24248b;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: bold;
+    font-size: 18px;
+
+  }
+  .imagem-redonda {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #000;
+    }
+    
+    .chat-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
+    #chat-messages {
+        width: 50%;
+        max-width: 600px;
+        height: 400px;
+        overflow-y: auto;
+        background: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+    }
+    
+    /* Estilizando cada mensagem */
+    .mensagem {
+        max-width: 80%;
+        padding: 10px;
+        border-radius: 8px;
+        margin: 5px;
+        word-wrap: break-word;
+    }
+    
+    /* Mensagem do usuário */
+    .usuario {
+        background-color: #d1e7ff;
+        align-self: flex-end;
+        text-align: right;
+        border-radius: 15px 15px 0 15px;
+    }
+    
+    /* Mensagem do bot */
+    .bot {
+        background-color: #f1f1f1;
+        align-self: flex-start;
+        border-radius: 15px 15px 15px 0;
+    }
+  /* Área de input */
+  .chat-input {
+    display: flex;
+    gap: 10px;
+  }
+
+  .chat-input input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .chat-input button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .chat-input button:hover {
+    background-color: #555;
+  }
+
+  /* Exemplo de um círculo à esquerda (avatar) */
+  .avatar {
+    width: 50px;
+    height: 50px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+  }

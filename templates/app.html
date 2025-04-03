@@ -4,78 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetMind.IA</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-        }
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        a:hover {
-            background-color: #0056b3;
-        }
-        .imagem-redonda {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #000;
-        }
-        .gato-esquerda {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 250px;
-            height: auto;
-            margin: 50px;
-        }
-        .cachorro-direita {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 250px;
-            height: auto;
-            margin: 50px;
-        }
-        body {
-            background: url('image/Background.png') no-repeat center center fixed; 
-            background-size: cover; 
-            margin: 0;
-            padding: 0;
-        }
-        p {
-            color: white
-        }
-        h1 {
-            color: white
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/StyleHome.css') }}?v={{ time }}">
 </head>
 <body>
     <div class="container">
-        <img src="image/PetMind.jpeg" alt="imagem-redonda" class="imagem-redonda"style="max-width: 100%; height: auto; margin-top: 20px;">
+        <img src="{{ url_for('static', filename='img/PetMind.jpeg') }}" alt="imagem-redonda" class="imagem-redonda">
         <h1>Bem-vindo à PetMind.IA </h1>
-        <img src="image/BlackCat.png" alt="gato-preto" class="gato-esquerda">
-        <img src="image/BlackDog.png" alt="cachorro-preto" class="cachorro-direita">
+        <img src="{{ url_for('static', filename='img/BlackCat.png') }}" alt="gato-preto" class="gato-esquerda">
+        <img src="{{ url_for('static', filename='img/BlackDog.png') }}" alt="cachorro-preto" class="cachorro-direita">
         <p>O FUTURO DOS PETSHOPS JÁ CHEGOU.<br><br>
         IMAGINE UM ESPAÇO ONDE INTELIGÊNCIA ARTIFICIAL E TECNOLOGIA GARANTEM O BEM-ESTAR COMO NUNCA VISTO ANTES.<br><br>
         MONITORAMENTO EM TEMPO REAL, RECOMENDAÇÕES PERSONALIZADAS E UM AMBIENTE PENSADO PARA A FELICIDADE DOS ANIMAIS E CUIDANDO DA SAÚDE MENTAL DOS SERES HUMANOS.<br><br>
         BEM-VINDO AO PETSHOP INTELIGENTE, ONDE INOVAÇÃO E CARINHO ANDAM LADO A LADO!</p>
-        <a href="chatbot.html">Ir para o ChatBot</a>
+        <a href="{{ url_for('chatbot') }}">Ir para o ChatBot</a>
     </div>
 </body>
 </html>
