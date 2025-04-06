@@ -20,7 +20,7 @@ def responder():
     mensagem_usuario = dados.get("message", "")
 
     # Lógica de resposta do bot (aqui um exemplo simples)
-    resposta_bot = f"Olá! 🐾💙 Bem-vindo ao PetCare – seu companheiro virtual para monitorar sua saúde mental enquanto interage com adoráveis pets! 🎓🐶🐱Aqui, você pode acompanhar seu bem-estar emocional, receber dicas para aliviar o estresse acadêmico e, claro, se divertir com interações terapêuticas com nossos amigos peludos.Estamos aqui para tornar sua jornada mais leve e acolhedora. Sempre que precisar, é só chamar! ✨🐾 "
+    resposta_bot = f"Olá! Seja bem-vindo(a) ao PetMind! 🐶💬 Estamos aqui para ajudar você a cuidar da sua saúde mental de um jeito leve e afetuoso — com a ajuda do seu pet! 🐾✨ O PetMind foi criado especialmente para estudantes como você, que enfrentam uma rotina intensa e, muitas vezes, estressante. Vamos juntos nessa? 💙"
 
     return jsonify({"resposta": resposta_bot})
 
